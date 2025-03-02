@@ -33,7 +33,7 @@ export function PlayRandomMoveEngine() {
   }
   const moveWhitePlayer = async (move) => {
     try {
-      const moveResultResponse = await fetch('http://localhost:8000/api/v1/player-move', {
+      const moveResultResponse = await fetch(`${import.meta.env.VITE_BITE_BACKEND}/api/v1/player-move`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({move :move}),
@@ -56,7 +56,7 @@ export function PlayRandomMoveEngine() {
   
   const moveBlackPlayer = async () => {
     try {
-      const moveResultResponse = await fetch('http://localhost:8000/api/v1/ai-move');
+      const moveResultResponse = await fetch(`${import.meta.env.VITE_BITE_BACKEND}/api/v1/ai-move`);
       const moveResult = await moveResultResponse.json();
   
       if (!moveResult.move) {
@@ -102,7 +102,7 @@ export function PlayRandomMoveEngine() {
   
   const handleNewGame = async()=>{
     try {
-      const startGameResponse = await fetch('http://localhost:8000/api/v1/new-game');
+      const startGameResponse = await fetch(`${import.meta.env.VITE_BITE_BACKEND}/api/v1/new-game`);
       const startGameData = await startGameResponse.json();
       console.log("startGameData -->", startGameData);
 
@@ -117,7 +117,7 @@ export function PlayRandomMoveEngine() {
   useEffect(() => {
     const initializeGame = async () => {
       try {
-        const startGameResponse = await fetch('http://localhost:8000/api/v1/new-game');
+        const startGameResponse = await fetch(`${import.meta.env.VITE_BITE_BACKEND}/api/v1/new-game`);
         const startGameData = await startGameResponse.json();
         console.log("startGameData -->", startGameData);
   
